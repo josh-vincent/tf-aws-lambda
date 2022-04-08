@@ -1,0 +1,13 @@
+{
+  "Version": "2012-10-17",
+  "Id": "lambdaAssumeRolePolicy",
+  "Statement": [
+    {
+      "Sid": "lambdaAssumeRole",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      }
+    }
+  ]
+}
