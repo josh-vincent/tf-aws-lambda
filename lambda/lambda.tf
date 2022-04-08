@@ -41,7 +41,7 @@ data "archive_file" "lambda_zip" {
 }
 
 resource "aws_lambda_function" "sample_lambda" {
-  filename = local.zip_file
+  filename      = data.archive_file.lambda_zip.output_path
   function_name = "lambda_terraform_function_name"
   role          = aws_iam_role.iam_role_for_lambda.arn
   handler       = "index.handler"
@@ -50,6 +50,9 @@ resource "aws_lambda_function" "sample_lambda" {
   runtime = "nodejs12.x"
 
   environment {
+    variables = {
+      test = "test"
+    }
   }
 }
 
