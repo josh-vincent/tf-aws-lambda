@@ -18,22 +18,22 @@ resource "aws_iam_role_policy_attachment" "lambda_logs" {
 
 locals {
   function_name = "hello-world-lambda"
-  handler       = "index.handler"
+  handler       = "helloworld.handler"
   // The .zip file we will create and upload to AWS later on
   zip_file = "hello-world-lambda.zip"
 }
 
 data "archive_file" "lambda_zip" {
   excludes = [
-      ".env",
-      ".terraform",
-      ".terraform.lock.hcl",
-      "docker-compose.yml",
-      "main.tf",
-      "terraform.tfstate",
-      "terraform.tfstate.backup",
-      local.zip_file,
-    ]
+    ".env",
+    ".terraform",
+    ".terraform.lock.hcl",
+    "docker-compose.yml",
+    "main.tf",
+    "terraform.tfstate",
+    "terraform.tfstate.backup",
+    local.zip_file,
+  ]
   source_dir = "${path.module}/files/functions/"
   type       = "zip"
   // Create the .zip file in the same directory as the helloworld.js file
