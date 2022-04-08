@@ -44,7 +44,7 @@ resource "aws_lambda_function" "sample_lambda" {
   filename      = data.archive_file.lambda_zip.output_path
   function_name = "hello_world_function"
   role          = aws_iam_role.iam_role_for_lambda.arn
-  handler       = "index.handler"
+  handler       = "helloworld.handler"
   // Upload the .zip file Terraform created to AWS
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
   runtime          = "nodejs12.x"
