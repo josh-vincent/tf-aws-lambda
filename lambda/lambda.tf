@@ -34,7 +34,7 @@ data "archive_file" "lambda_zip" {
       "terraform.tfstate.backup",
       local.zip_file,
     ]
-  source_dir = "${path.module}/functions/"
+  source_dir = "${path.module}/files/functions/"
   type       = "zip"
   // Create the .zip file in the same directory as the helloworld.js file
   output_path = "${path.module}/functions/${local.zip_file}"
